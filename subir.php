@@ -1,0 +1,47 @@
+<?php
+session_start();
+include('conexion.php');
+if(isset($_SESSION['user_id']) && $_SESSION["status"]=="Activo")
+{
+
+
+if(isset($_POST['Guardar'])){
+    $imagen = $_FILES['imagen']['name'];
+    $titulo = $_POST['titulo'];
+    $descripcion= $_POST['Descripcion'];
+    $categoria= $_POST['categoria'];
+    $subcategoria= $_POST['subcategoria'];
+
+    if(isset($imagen) && $imagen != ""){
+        $tipo = $_FILES['imagen']['type'];
+        $temp  = $_FILES['imagen']['tmp_name'];
+
+       if( !((strpos($tipo,'jpg') || strpos($tipo,'jpeg') || strpos($tipo,'png')))){
+          $_SESSION['mensaje'] = 'solo se permite archivos jpg, jpeg, png';
+          $_SESSION['tipo'] = 'danger';
+          header('location:images.php');
+       }else{
+         $query = "INSERT INTO images_(`Titulo`, `Imagen`, `Descripcion`, `Categoria`, `Subcategoria`,`STATUS`) values('$titulo','$imagen','$descripcion','$categoria','$subcategoria',1)";
+         $resultado = mysqli_query($conn,$query);
+         if($resultado){
+              move_uploaded_file($temp,'images/'.$imagen);   
+             $_SESSION['mensaje'] = 'se ha subido correctamente';
+             $_SESSION['tipo'] = 'success';
+             header('location:images.php');
+         }else{
+             $_SESSION['mensaje'] = 'ocurrio un error en el servidor';
+             $_SESSION['tipo'] = 'danger';
+         }
+       }
+    }
+}
+}
+else
+{
+
+    header("Location:iniciar_sesion.php");
+}
+
+
+
+?>

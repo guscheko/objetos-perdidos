@@ -1,0 +1,74 @@
+<?php
+
+
+include_once 'database.php';
+
+$message = '';
+
+if(!empty($_POST['correo']) && !empty($_POST['password']))
+{
+	
+	 $sql="INSERT INTO registro(nombre,telefono,correo,password,rol) VALUES (:nombre,:telefono,:correo,:password,:rol";
+	$rol=2;
+	$stmt = $conn->prepare($sql);
+	$stmt->bindParam(':nombre',$_POST['nombre']);
+	$stmt->bindParam(':telefono',$_POST['telefono']);
+	$stmt->bindParam(':correo',$_POST['correo']);
+	$stmt->bindParam(':password',$rol);
+    $stmt->bindParam(':rol',$_POST['password']);
+	$password = password_hash($_POST['password'],PASSWORD_BCRYPT);
+	
+if($stmt->execute())
+{
+	 header('location:index.php');
+
+}else
+{
+	$message = 'A ocurrido un error';
+}	
+}
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registrate</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="estilos.css" />
+    <script type="text/javascript" src="validaciones.js"></script>
+</head>
+
+<body>
+		<?php if(!empty($message)):?>
+		<p><?php $message ?></p>
+		<?php endif; ?>
+    <form action="registrate.php"  method="post" name="fvalida">
+        <div class="form-group text-center pt-3">
+
+
+
+            <section class="form-registro">
+                <h1>REGISTRO</h1>
+                <input class="controls" type="text" name="nombre"  placeholder="Ingrese su Nombre Completo" >
+                <input class="controls" type="text" name="telefono"  placeholder="Telefono(opcional)" >
+                <input class="controls" type="email" name="correo" placeholder="Correo Institucional" >
+                <input class="controls" type="password" name="password" 
+                    placeholder="Ingrese su Contraseña" id="password">
+                <input class="controls" type="password" name="password1" 
+                    placeholder="Confirme su Contraseña" id="password1" >
+                <p><input type="checkbox" aria-label="Checkbox for following text input" id="terminos"> Estoy de acuerdo con los <a
+                        href="http://www.cucea.udg.mx/politicas-de-uso" >Terminos y Condiciones </a></p>
+                <input class="boton" type="button"  value="Registrarme" onclick="valida_envia()" />
+                <p><a href="iniciar_sesion.php">¿Ya tengo una Cuenta?</a></p>
+
+            </section>
+        </div>
+    </form>
+</body>
+
+</html>
