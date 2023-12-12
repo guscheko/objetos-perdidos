@@ -25,7 +25,7 @@
 		$_SESSION['user_id']=$resultado->id; // Storing user session value
 	    $_SESSION['user']=$resultado->nombre; 
 	    $_SESSION['rol']=$resultado->rol;
-	    header('location:index.php');
+	    header('location:index.html');
 	 }else {
 		 $message = 'Usuario o Contraseña incorrecta';
 	 }	 
