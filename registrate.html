@@ -20,7 +20,7 @@ if(!empty($_POST['correo']) && !empty($_POST['password']))
 	
 if($stmt->execute())
 {
-	 header('location:index.php');
+	 header('location:index.html');
 
 }else
 {
@@ -47,7 +47,7 @@ if($stmt->execute())
 		<?php if(!empty($message)):?>
 		<p><?php $message ?></p>
 		<?php endif; ?>
-    <form action="registrate.php"  method="post" name="fvalida">
+    <form action="registrate.html"  method="post" name="fvalida">
         <div class="form-group text-center pt-3">
 
 
