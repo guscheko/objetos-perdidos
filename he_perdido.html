@@ -40,13 +40,13 @@ if(isset($_SESSION['user_id']) && $_SESSION["status"]=="Activo")
                       <a class="nav-link text-light"><?php echo "Bienvendo ".$_SESSION['user']; ?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" href="index.php">Inicio</a>
+                <a class="nav-link text-light" href="index.html">Inicio</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" href="images.php">subir imagen</a>
+                <a class="nav-link text-light" href="images.html">subir imagen</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" href="cerrar_sesion.php">Cerrar sesion</a>
+                <a class="nav-link text-light" href="cerrar_sesion.html">Cerrar sesion</a>
             </li>
         </ul>
     </nav>
@@ -68,7 +68,7 @@ if(isset($_SESSION['user_id']) && $_SESSION["status"]=="Activo")
       </div>
       
     </div>
-    <form action="buscar.php" method="post" enctype="multipart/form-data" id="f1" name="f1">
+    <form action="buscar.html" method="post" enctype="multipart/form-data" id="f1" name="f1">
     <div class="row">
 
        <div class="col-lg-12">
@@ -123,7 +123,7 @@ if(isset($_SESSION['user_id']) && $_SESSION["status"]=="Activo")
                 <center><input type="submit" value="BUSCAR" class="btn btn-primary btn-block " name="Siguiente"></center>
               </div>
               <div class="col-sm-3">
-                <center><a href="index.php"><button type="button" class="btn btn-danger btn-block">REGRESAR</button></a></center>
+                <center><a href="index.html"><button type="button" class="btn btn-danger btn-block">REGRESAR</button></a></center>
               </div>
               <div class="col-sm-3"></div>
           </div> 
@@ -145,7 +145,7 @@ if(isset($_SESSION['user_id']) && $_SESSION["status"]=="Activo")
 else
 {
 
-    header("Location:iniciar_sesion.php");
+    header("Location:iniciar_sesion.html");
 }
 
 ?>
