@@ -12,7 +12,7 @@ echo $status=2;
 $sql = "UPDATE `images_` SET `status`=$status,`Entregado`='$entregado',`fecha`='$fecha',`Noentregado`='$noentregado' WHERE id=$id";
     if(mysqli_query($conn, $sql)){
 
-         header('location:descripcion_objeto.php?id_img='.$id.'&msg=1');
+         header('location:descripcion_objeto.html?id_img='.$id.'&msg=1');
     } else {
         echo "ERROR: No se ejecuto $sql. " . mysqli_error($link);
     }
