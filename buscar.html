@@ -35,13 +35,13 @@ if(isset($_SESSION['user_id']) && $_SESSION["status"]=="Activo")
                       <a class="nav-link text-light"><?php echo "Bienvendo ".$_SESSION['user']; ?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" href="index.php">Inicio</a>
+                <a class="nav-link text-light" href="index.html">Inicio</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" href="images.php">subir imagen</a>
+                <a class="nav-link text-light" href="images.html">subir imagen</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" href="cerrar_sesion.php">Cerrar sesion</a>
+                <a class="nav-link text-light" href="cerrar_sesion.html">Cerrar sesion</a>
             </li>
         </ul>
     </nav>
@@ -139,7 +139,7 @@ if(isset($_SESSION['user_id']) && $_SESSION["status"]=="Activo")
 else
 {
 
-    header("Location:iniciar_sesion.php");
+    header("Location:iniciar_sesion.html");
 }
 
 ?>
